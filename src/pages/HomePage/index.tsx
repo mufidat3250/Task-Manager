@@ -1,5 +1,5 @@
 import './Style.scss'
-import axios, { Axios, AxiosResponse } from 'axios'
+import axios, { Axios,} from 'axios'
 import TaskHeader from '../../component/TaskHeader'
 import './Style.scss'
 import Task from '../../component/Task'
@@ -10,12 +10,7 @@ const HomePage = () => {
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>  setTask(e.target.value)
 
     const getAlltask = async() => {
-      try {
-          const tasks = await axios.get('http://localhost:5000/api/tasks')
-          console.log({tasks})
-        } catch (error) {
-          console.log(error.message)
-        }
+      axios.get('/api/tasks').then((res)=> console.log(res))
     }
     useEffect(()=>{
       getAlltask()
