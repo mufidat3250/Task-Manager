@@ -6,23 +6,16 @@ import { useEffect, useState } from 'react'
 import taskServices from '../../services/tasks.js'
 
 const HomePage = () => {
-        const [task, setTask] = useState('')
         const [allTask, setAllTask] = useState([])
-    
-
-   
-    useEffect(()=>{
-      taskServices.getAllTask().then(data=> setAllTask(data))
-
+        useEffect(()=>{
+        taskServices.getAllTask().then(data=> setAllTask(data))
     }, [])
-
-    console.log(allTask)
-    console.log({allTask})
-  return (
+    
+    return (
     <div className='home'>
-      {/* <TaskHeader setAllTask = {setAllTask}/> */}
+      <TaskHeader setAllTasks = {setAllTask}/>
       <div className='task-container'>
-        {allTask.map(({name, id})=> <Task task={name} key={id}/>)}
+        {allTask.map(({name, id})=> <Task task={name} key={id} id={id}/>)}
       </div>
     </div>
   )

@@ -11,9 +11,11 @@ const getTask = (id:string) => {
     const response = axios.get(`${baseURL}/${id}`)
     return response.then((res)=> res.data)
 }
-const createTask = (newTask:{name:string, completed:boolean}) => {
+const createTask = async(newTask:{name:string, completed:boolean}) => {
+    console.log(newTask)
     const response = axios.post(baseURL, newTask)
-    return response.then((res)=> res.data)
+    const result = (await response).data
+    return result
 }
 const updateTask = (id:string, updateObject:{name:string, completed:boolean}) => {
     const response = axios.put(`${baseURL}/${id}`, updateObject)

@@ -1,13 +1,16 @@
 import './App.css'
 import HomePage from './pages/HomePage'
-import SinglePage from './pages/singlePage'
+import {Routes, Route} from 'react-router-dom'
+import SinglePage from './pages/SinglePage'
 
 function App() {
-  
-return (
+
+  return (
     <div className='app'> 
-      <HomePage/>
-      {/* <SinglePage/> */}
+    <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/:id' element={<SinglePage/>}/>
+    </Routes>
     </div>
   )
 }
