@@ -1,5 +1,5 @@
 import './Style.scss'
-import axios, { Axios} from 'axios'
+import axios from 'axios'
 import TaskHeader from '../../component/TaskHeader'
 import './Style.scss'
 import Task from '../../component/Task'
