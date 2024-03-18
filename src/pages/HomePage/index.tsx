@@ -1,26 +1,26 @@
 import './Style.scss'
-import axios from 'axios'
 import TaskHeader from '../../component/TaskHeader'
 import './Style.scss'
 import Task from '../../component/Task'
 import { useEffect, useState } from 'react'
+import taskServices from '../../services/tasks.js'
 
 const HomePage = () => {
         const [task, setTask] = useState('')
         const [allTask, setAllTask] = useState([])
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>  setTask(e.target.value)
+    
 
-    const getAlltask = async() => {
-      const request = axios.get('/api/tasks')
-      return request.then((res)=> setAllTask(res.data))
-    }
+   
     useEffect(()=>{
-      getAlltask()
+      taskServices.getAllTask().then(data=> setAllTask(data))
 
     }, [])
+
+    console.log(allTask)
+    console.log({allTask})
   return (
     <div className='home'>
-      <TaskHeader handleChange={handleChange} task ={task}/>
+      {/* <TaskHeader setAllTask = {setAllTask}/> */}
       <div className='task-container'>
         {allTask.map(({name, id})=> <Task task={name} key={id}/>)}
       </div>
