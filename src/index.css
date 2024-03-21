@@ -8,3 +8,15 @@ html body{
   height: 100vh;
   font-family: 'Roboto';
 }
+.error{
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  visibility: visible;
+}
+.success{
+  color: green;
+  font-size: 14px;
+  text-align: center;
+  visibility: visible;
+}

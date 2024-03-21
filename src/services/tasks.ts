@@ -7,9 +7,10 @@ export const getAllTask = async()=> {
     const result = await response.data
     return result
 }
-const getTask = (id:string) => {
-    const response = axios.get(`${baseURL}/${id}`)
-    return response.then((res)=> res.data)
+const getTask = async(id:string) => {
+    const response = await axios.get(`${baseURL}/${id}`)
+    const result = await response.data
+    return result
 }
 const createTask = async(newTask:{name:string, completed:boolean}) => {
     console.log(newTask)

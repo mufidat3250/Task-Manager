@@ -1,14 +1,19 @@
 import { useState } from "react"
-import Button from "../Button"
+import Button from "../../atoms/Button/index.js"
 import Input from "../Input"
 import taskService  from '../../services/tasks.js'
-const TaskHeader = ({setAllTasks}:{setAllTasks:Function}) => {
+import { useDispatch} from "react-redux"
+import { createTasks } from "../../statemanagement/slices/taskSlice.js"
+
+const TaskHeader = () => {
   const [task, setTask] = useState('')
+  const dispatch = useDispatch()
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>  setTask(e.target.value)
+  
   const handleSubmit = () => {
     const newTask = {name:task.trim(), completed:false}
     taskService.createTask(newTask).then((res)=> {
-      setAllTasks((prev:Array<{}>)=> prev.concat(res))
+      dispatch(createTasks(res))
       setTask('')
     })
   }
